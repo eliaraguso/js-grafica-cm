@@ -9,7 +9,7 @@
 #campo {
     display: flex;
     flex-wrap: wrap;
-    width: 1000px;
+    max-width: 1000px;
     margin: auto;
 }
 .quadrato {
