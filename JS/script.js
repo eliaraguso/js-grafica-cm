@@ -4,7 +4,7 @@
 
 
 // Chiedo all'utente di inserire il numero di celle di cui sarà composto il campo da gioco.
-let totaleCelle = parseInt(prompt("Inserisci il numero di celle che andranno a formare il campo da gioco in modo che sia sempre una scacchiera quadrata. Il valore dev'essere compreso tra 4 e 100 e gli unici valori consentiti corrispondono al quadrato del numero di celle o colonne di cui sarà composto il campo (4, 9, 16, 25, 36, 49, 64, 81, 100)"));
+let totaleCelle = parseInt(prompt("Inserisci il numero di celle che andranno a formare il campo da gioco in modo che sia sempre una scacchiera quadrata. Il valore dev'essere compreso tra 4 e 100 e gli unici valori consentiti corrispondano al quadrato del numero di celle o colonne di cui sarà composto il campo (4, 9, 16, 25, 36, 49, 64, 81, 100)"));
 
 
 // definisco una variabile per indicare l'id del campo da gioco in html
@@ -13,21 +13,28 @@ let id = "campo";
 
 // definisco una variabile di controllo per la forma della scacchiera (deve essere un quadrato)
 let totaleRighe = Math.sqrt(totaleCelle);
+// console.log(totaleRighe);
 
-// verifico che l'input utente sia un numero e
-while (isNaN(totaleCelle)) {
-    totaleCelle = parseInt(prompt("Ti ho detto di inserire un numero!!!!"));
+// Creo un ciclo per verificare che
+while (isNaN(totaleCelle) || totaleCelle < 4 || totaleCelle >100 ) {
+
+    // l'input utente sia un numero e che
+    if (isNaN(totaleCelle)) {
+        totaleCelle = parseInt(prompt("Ti ho detto di inserire un numero!!!!"));
+
+    // sia compreso tra 4 e 100
+    } else if (totaleCelle < 4 || totaleCelle >100) {
+        totaleCelle = parseInt(prompt("Ti ho detto di inserire un numero tra 4 e 100 !!!!"));
+    }
+    
 }
 
-// che sia compreso tra 4 e 100
-while (totaleCelle < 4 || totaleCelle >100) {
-    totaleCelle = parseInt(prompt("Ti ho detto di inserire un numero tra 4 e 100 !!!!"));
-}
 
 // e che sia sempre il quadrato del numero di righe o colonne così da formare sempre una scacchiera quadrata (DA COMPLETARE)
-// while (totaleRighe !== Number.isInteger(totaleRighe) ) {
-//     totaleCelle = parseInt(prompt("Ti ho detto di inserire un numero tra 10 e 100 che faccia parte di questo insieme di numeri (4, 9, 16, 25, 36, 49, 64, 81, 100)!!!!"));
+// while (!Number.isInteger(totaleRighe)){
+//     totaleCelle = parseInt(prompt("Occhio che le tue scelte sono limitate (4, 9, 16, 25, 36, 49, 64, 81, 100)!!!!"));
 // }
+
 
 
 
@@ -48,7 +55,7 @@ document.getElementById("campo").addEventListener("click",
     }
 )
 
-
+// Scateno la funzione
 creaGriglia(totaleCelle);
 
 
