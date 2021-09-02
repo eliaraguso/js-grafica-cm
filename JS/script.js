@@ -8,7 +8,7 @@ let totaleCelle = parseInt(prompt("Inserisci il numero di celle che andranno a f
 
 
 // definisco una variabile per indicare l'id del campo da gioco in html
-let id = "campo";
+let idCampo = "campo";
 
 
 // definisco una variabile di controllo per la forma della scacchiera (deve essere un quadrato)
@@ -42,13 +42,13 @@ while (isNaN(totaleCelle) || totaleCelle < 4 || totaleCelle >100 ) {
 
 function creaGriglia(numCelle){
     for (let i = 1; i <= numCelle; i++) {
-    document.getElementById("campo").innerHTML += `<div class="quadrato">${i}</div>`;
+    document.getElementById(idCampo).innerHTML += `<div class="quadrato">${i}</div>`;
     }
 }
 
 
 // faccio si che all'evento click sopra ogni cella, una funzione che creo, faccia cambiare colore alla cella e riporti un alert col numero della cella selezionata
-document.getElementById("campo").addEventListener("click",
+document.getElementById(idCampo).addEventListener("click",
     function(event){
         event.target.classList.add("cliccato");
         alert(event.target.innerHTML);
